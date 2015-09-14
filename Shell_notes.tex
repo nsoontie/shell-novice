@@ -1,0 +1,404 @@
+\documentclass[xcolor=dvipsnames]{beamer}
+% Class options include: notes, notesonly, handout, trans,
+%                        hidesubsections, shadesubsections,
+%                        inrow, blue, red, grey, brown
+
+% Theme for beamer presentation.
+\usepackage{graphics}
+\usepackage{multicol}
+\usepackage{url}
+
+% Other themes include: beamerthemebars, beamerthemelined,
+%                       beamerthemetree, beamerthemetreebars
+
+
+\section*{Shell}
+
+\begin{document}
+
+\begin{frame}
+\begin{center}{\Huge Shell}
+\end{center}
+\end{frame}
+
+\subsection*{Introduction}
+
+\begin{frame}
+\frametitle{Introduction}
+Learning Goals
+\begin{enumerate}
+
+ \item   Explain how the shell relates to the keyboard, the screen, the operating system, and users' programs.
+ \item   Explain when and why command-line interfaces should be used instead of graphical interfaces.
+
+\end{enumerate}
+
+\end{frame}
+
+\subsection*{Files and Directories}
+
+\begin{frame}
+\frametitle{Files and Directories}
+Learning Goals
+{\small
+\begin{enumerate}
+\item    Explain the similarities and differences between a file and a directory.
+\item    Translate an absolute path into a relative path and vice versa.
+\item    Construct absolute and relative paths that identify specific files and directories.
+\item    Explain the steps in the shell's read-run-print cycle.
+\item    Identify actual command, flags, and filenames in command-line call.
+\item    Demonstrate the use of tab completion, and explain its advantages.
+\end{enumerate}
+
+\begin{multicols}{2}
+\begin{itemize}
+\item whoami
+\item pwd
+\item /
+%Possibly add mkdir commands, download data files and cd commands here or just me run from nelle directory??
+\item ls
+\item ls -F
+\item ls -F data
+\item ls -F /data
+\item cd data
+\item cd ..
+\item ls -F -a
+\item ls north-pacific-gyre/2012-07-03
+\item ls no tab
+\end{itemize}
+\end{multicols}}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise}
+
+\includegraphics[scale=0.5]{fig/filesystem-challenge.png}
+
+If \texttt{pwd} displays \texttt{/Users/backup}, and \texttt{-r} tells \texttt{ls} to display things in reverse order, what command will display:
+
+\texttt{pnas\_sub/ pnas\_final/ original/}
+\begin{enumerate}
+\item ls pwd
+\item ls -r -F
+\item ls -r -F /Users/backup
+\item Either \#2 or \#3 above, but not \#1.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise}
+
+\includegraphics[scale=0.5]{fig/filesystem-challenge.png}
+
+If \texttt{pwd} displays \texttt{/Users/backup}, and \texttt{-r} tells \texttt{ls} to display things in reverse order, what command will display:
+
+\texttt{pnas\_sub/ pnas\_final/ original/}
+\begin{enumerate}
+\item ls pwd
+\item ls -r -F
+\item ls -r -F /Users/backup
+\alert{\item Either \#2 or \#3 above, but not \#1.}
+\end{enumerate}
+\end{frame}
+
+\subsection*{Creating Things}
+\begin{frame}
+\frametitle{Creating Things}
+\begin{enumerate}
+\item    Create a directory hierarchy that matches a given diagram.
+\item    Create files in that hierarchy using an editor or by copying and renaming existing files.
+\item    Display the contents of a directory using the command line.
+\item    Delete specified files and/or directories.
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+\item mkdir thesis
+\item cd thesis
+\item nano draft.txt
+\item rm draft.txt
+\item rm thesis
+\item rmdir thesis
+\item rm -r thesis
+\item mv thesis/draft.txt thesis/quotes.txt
+\item mv thesis/quotes.txt .
+\item cp quotes.txt thesis/quotations.txt
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+
+\begin{frame}[fragile]
+Create a workspace on your desktop so that it's easy to find,
+and easy to explore with your GUI filesystem tool
+(Explorer, Finder, Nautilus, ...)
+\begin{verbatim}
+$ cd
+$ cd Desktop
+$ mkdir swc
+$ cd swc
+\end{verbatim}
+\end{frame}
+
+\begin{frame}
+\frametitle{Creating Things}
+\begin{enumerate}
+\item    Create a directory hierarchy that matches a given diagram.
+\item    Create files in that hierarchy using an editor or by copying and renaming existing files.
+\item    Display the contents of a directory using the command line.
+\item    Delete specified files and/or directories.
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+\item mkdir thesis
+\item cd thesis
+\item nano draft.txt
+\item rm draft.txt
+\item rm thesis
+\item rmdir thesis
+\item rm -r thesis
+\item mv thesis/draft.txt thesis/quotes.txt
+\item mv thesis/quotes.txt .
+\item cp quotes.txt thesis/quotations.txt
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+%
+%\begin{frame}
+%A bug in recent versions of nano on Windows causes the Git Bash terminal windows to be blanked when nano exits -- annoying.\\[20pt]
+%
+%A work-around for the issue is to open another Git Bash window and run nano there.
+%Of course you will have to {\tt cd} in both windows as you move around the file system.\\[20pt]
+%
+%An alternative is to download and install the Notepad++ editor and ask one of the helpers or instructors to help you add Notepad++ to your PATH -- the list of directories that the shell looks in to find the programs you ask it to run.
+%\end{frame}
+
+
+
+\begin{frame}[fragile]
+\frametitle{Exercise}
+What command(s) could you run so that the commands below will produce the output shown? (and do it)
+\begin{verbatim}
+$ ls
+analyzed   raw
+$ ls analyzed
+fructose.dat    glucose.dat    sucrose.dat
+\end{verbatim}
+\end{frame}
+
+\subsection{PipesAndFilters}
+\begin{frame}
+\frametitle{Pipes and Filters}
+\begin{enumerate}
+
+\item    Redirect a command's output to a file.
+\item    Process a file instead of keyboard input using redirection.
+\item    Construct command pipelines with two or more stages.
+\item    Explain what usually happens if a program or pipeline isn't given any input to process.
+\item    Explain Unix's "small pieces, loosely joined" philosophy.
+
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+\item cd molecules
+\item wc *.pdb
+\item *, ?
+\item wc -l
+\item wc --help
+\item wc -l *.pdb $>$ lengths
+\item cat lengths
+\item sort lengths
+\item sort lengths $>$ sorted-lengths
+\item head -1 sorted-lengths
+\item sort lengths $|$ head -1
+\item cd north-pacific-gyre/2012-07-03
+\item wc -l *.txt
+\item wc -l *.txt $|$ sort $|$ head -5
+\item ls *Z.txt
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+
+\begin{frame}[fragile]
+We're going to start working with Nelle Nemo's Great Pacific Garbage Patch files,
+so everybody needs a copy of her directories and files so that you can pretend that you are Nelle.
+
+Use Mercurial to grab the files from Bitbucket and put them in a {\tt nnemo} directory in your SWC workspace:
+{\footnotesize
+\begin{verbatim}
+$ cd
+$ cd Desktop/swc
+$ hg clone https://bitbucket.org/douglatornell/swc-nelle-files nnemo
+\end{verbatim}
+}
+
+You can copy and paste the {\tt hg clone} command from the Etherpad.
+We'll learn what it means in the Version Control with Mercurial section later today.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Pipes and Filters}
+\begin{enumerate}
+
+\item    Redirect a command's output to a file.
+\item    Process a file instead of keyboard input using redirection.
+\item    Construct command pipelines with two or more stages.
+\item    Explain what usually happens if a program or pipeline isn't given any input to process.
+\item    Explain Unix's "small pieces, loosely joined" philosophy.
+
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+\item cd molecules
+\item wc *.pdb
+\item *, ?
+\item wc -l
+\item wc --help
+\item wc -l *.pdb $>$ lengths
+\item cat lengths
+\item sort lengths
+\item sort lengths $>$ sorted-lengths
+\item head -1 sorted-lengths
+\item sort lengths $|$ head -1
+\item cd north-pacific-gyre/2012-07-03
+\item wc -l *.txt
+\item wc -l *.txt $|$ sort $|$ head -5
+\item ls *Z.txt
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise}
+In our current directory, we want to find the 3 files which have the least number of lines. Which command listed below would work?
+
+\begin{enumerate}
+\item wc -l * > sort -n > head -3
+\item wc -l * | sort -n | head 1-3
+\item wc -l * | head -3 | sort -n
+\item wc -l * | sort -n | head -3
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Exercise}
+In our current directory, we want to find the 3 files which have the least number of lines. Which command listed below would work?
+
+\begin{enumerate}
+\item wc -l * > sort -n > head -3
+\item wc -l * | sort -n | head 1-3
+\item wc -l * | head -3 | sort -n
+\alert{\item wc -l * | sort -n | head -3}
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Loops - Part 1}
+\begin{enumerate}
+  \item Write a loop that applies one or more commands separately to each file in a set of files.
+  \item Trace the values taken on by a loop variable during execution of the loop.
+  \item Explain the difference between a variable's name and its value.
+  \item Explain why spaces and some punctuation characters shouldn't be used in files' names.
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+  \item for ... do ... done
+  \item varname, \$varname
+  \item echo
+  \item "\$varname"
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Loops - Part 2}
+\begin{enumerate}
+  \item Demonstrate how to see what commands have recently been executed.
+  \item Re-run recently executed commands without retyping them.
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+  \item ls *[AB].txt
+  \item Up-Arrow
+  \item history
+  \item Ctrl-A, Ctrl-E
+  \item Ctrl-R
+  \item Ctrl-C
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exercise}
+In your {\tt analyzed} directory, what is the effect of this loop?
+
+\begin{verbatim}
+for sugar in *.dat
+do
+    echo $sugar
+    cat $sugar > xylose.dat
+done
+\end{verbatim}
+\begin{enumerate}
+  \item Prints {\tt fructose.dat}, {\tt glucose}, and {\tt sucrose}, and copies {\tt sucrose} to create {\tt xylose}.
+  \item Prints {\tt fructose}, {\tt glucose}, and {\tt sucrose}, and concatenates all three files to create {\tt xylose}.
+  \item Prints {\tt fructose}, {\tt glucose}, {\tt sucrose}, and {\tt xylose}, and copies {\tt sucrose} to create {\tt xylose}.
+  \item None of the above.
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Shell Scripts}
+\begin{enumerate}
+\item Write a shell script that runs a command or series of commands for a fixed set of files.
+\item Run a shell script from the command line.
+\item Write a shell script that operates on a set of files defined by the user on the command line.
+\item Create pipelines that include user-written shell scripts.
+\end{enumerate}
+\begin{multicols}{2}
+\begin{itemize}
+  \item bash myscript.sh
+  \item \$1, \$2, ... \$n, \$*
+  \item \# comment
+  \item history $|$ tail -4 $>$ script.sh
+\end{itemize}
+\end{multicols}
+\end{frame}
+
+
+\begin{frame}[fragile]
+\frametitle{Exercise}
+Write a shell script called {\tt longest.sh} that takes the name of a directory and a filename extension as its parameters,
+and prints out the number of lines,
+directory,
+and name of the file with the most lines in that directory with that extension.
+For example:
+
+\begin{verbatim}
+$ bash longest.sh more-molecules pdb
+\end{verbatim}
+
+would print the number of lines,
+directory,
+and name of the {\tt .pdb} file in {\tt more-molecules} that has
+the most lines.
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Finding Things}
+\begin{enumerate}
+  \item Use {\tt grep} to select lines from text files that match simple patterns.
+  \item Use {\tt find} to find files whose names match simple patterns.
+  \item Use the output of one command as the command-line parameters to another command.
+  \item Explain what is meant by "text" and "binary" files, and why many common tools don't handle the latter well.
+\end{enumerate}
+\end{frame}
+
+\end{document}
