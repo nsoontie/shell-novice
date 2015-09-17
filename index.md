@@ -9,7 +9,7 @@ More importantly,
 it helps them combine existing programs in new ways
 and automate repetitive tasks
 so that they don't have to type the same things over and over again.
-Use of the shell is fundamental to using a wide range of other powerful tools 
+Use of the shell is fundamental to using a wide range of other powerful tools
 and computing resources (including "high-performance computing" supercomputers).
 These lessons will start you on a path towards using these resources effectively.
 
@@ -27,7 +27,7 @@ These lessons will start you on a path towards using these resources effectively
 > ## Getting ready {.getready}
 >
 > You need to download some files to follow this lesson:
-> 
+>
 > 1. Make a new folder in your Desktop called `shell-novice`.
 > 2. Download [shell-novice-data.zip](./shell-novice-data.zip) and move the file to this folder.
 > 3. If it's not unzipped yet, double-click on it to unzip it. You should end up with a new folder called `data`.
@@ -48,6 +48,8 @@ These lessons will start you on a path towards using these resources effectively
 7.  [Finding Things](06-find.html)
 
 ## Other Resources
+
+*   [Shell Command Reminders](commands.html)
 
 *   [Reference](reference.html)
 *   [Discussion](discussion.html)
