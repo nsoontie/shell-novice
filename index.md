@@ -30,11 +30,12 @@ These lessons will start you on a path towards using these resources effectively
 > 
 > 1. Make a new folder in your Desktop called `shell-novice`.
 > 2. Download [shell-novice-data.zip](./shell-novice-data.zip) and move the file to this folder.
-> 3. If it's not unzipped yet, double-click on it to unzip it. You should end up with a new folder called `data`.
+> 3. If it's not unzipped yet, double-click on it to unzip it. You 
+should end up with a new folder called `workshop`.
 > 4. You can access this folder from the Unix shell with:
 >
 > ~~~ {.input}
-> $ cd && cd Desktop/shell-novice/data
+> $ cd && cd Desktop/shell-novice/workshp
 > ~~~
 
 ## Topics
