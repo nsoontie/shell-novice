@@ -50,6 +50,7 @@ should end up with a new folder called `workshop`.
 
 ## Other Resources
 
+*   [Shell Slide-deck](Shell_notes.pdf)
 *   [Shell Command Reminders](commands.html)
 
 *   [Reference](reference.html)
