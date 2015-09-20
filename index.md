@@ -35,7 +35,7 @@ should end up with a new folder called `workshop`.
 > 4. You can access this folder from the Unix shell with:
 >
 > ~~~ {.input}
-> $ cd && cd Desktop/shell-novice/workshp
+> $ cd && cd Desktop/shell-novice/workshop
 > ~~~
 
 ## Topics
