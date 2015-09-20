@@ -356,6 +356,35 @@ What is the output of:
 
 \end{frame}
 
+%-------------------------- Challenge 01 - SOLUTION ------------------------------------------%
+
+\begin{frame}{Variables in loops}
+Suppose that \texttt{ls} initially displays:
+\vspace{0.7cm}
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+fructose.dat      glucose.dat       sucrose.dat
+\end{beamerboxesrounded}
+
+What is the output of:
+\vspace{0.7cm}
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\texttt{for datafile in *.dat}
+
+\texttt{do}
+
+\texttt{	ls *.dat}
+
+\texttt{done}
+\end{beamerboxesrounded}
+
+\alert{ANSWER:\\ }
+fructose.dat      glucose.dat       sucrose.dat\\
+fructose.dat      glucose.dat       sucrose.dat\\
+fructose.dat      glucose.dat       sucrose.dat\\
+
+\end{frame}
+
+
 %-------------------------- Challenge 02 ------------------------------------------%
 
 \begin{frame}{Saving to a file in a loop }
@@ -384,43 +413,30 @@ In the same directory, what is the effect of this loop?
 
 \end{frame}
 
-%-------------------------- Challenge 03 ------------------------------------------%
+%-------------------------- Challenge 02 - SOLUTION------------------------------------------%
 
-\begin{frame}{Nested loops and command-line expressions}
-The \texttt{expr} does simple arithmetic using command-line parameters:
+\begin{frame}{Saving to a file in a loop }
+In the same directory, what is the effect of this loop?
 
-\small{
 \begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
-\texttt{\$ expr 3 + 5}
-
-\texttt{8}
-
-\texttt{\$ expr 30 / 5 - 2}
-
-\texttt{4}
-\end{beamerboxesrounded}}
-
-Given this, what is the output of:
-
-\small{
-\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
-\texttt{for left in 2   3 }
+\texttt{for sugar in *.dat}
 
 \texttt{do}
 
-\texttt{    for right in \$left}
+\texttt{	echo \$sugar}
 
-\texttt{     do}
- 
-\texttt{           expr \$left + \$right}
-
-\texttt{     done}
+\texttt{	cat \$sugar > xylose.dat}
 
 \texttt{done}
+\end{beamerboxesrounded}
 
-\end{beamerboxesrounded}}
-
-
+\small{
+\begin{enumerate}
+\alert{\item{Prints \texttt{fructose.dat, glucose.dat, and sucrose.dat}, and the text from \texttt{sucrose.dat} will be saved to a file called \texttt{xylose.dat}.}}
+\item{Prints \texttt{fructose.dat, glucose.dat, and sucrose.dat}, and the text from all three files would be concatenated and saved to a file called \texttt{xylose.dat}.}
+\item{Prints \texttt{fructose.dat, glucose.dat, sucrose.dat, and xylose.dat}, and the text from \texttt{sucrose.dat}  will be saved to a file called \texttt{xylose.dat}.}
+\item{None of the above}
+\end{enumerate}}
 
 
 \end{frame}
@@ -498,13 +514,76 @@ echo \$*.dat}}
 
 \end{frame}
 
+%-------------------------- Challenge 03 - SOL------------------------------------------%
+
+\begin{frame}{Script reading comprehension}
+
+Joel's data directory contains three files: \texttt{fructose.dat, glucose.dat}, and \texttt{sucrose.dat}. Explain what a script called \texttt{example.sh} would do when run as bash \texttt{example.sh *.dat} if it contained the following lines:
+\vspace{0.5cm}
+
+
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\small{\texttt{\# Script 1\\
+echo *.*}}
+\end{beamerboxesrounded}
+
+\alert{ANSWER:}
+
+Prints 
+
+\texttt{example.sh fructose.dat   glucose.dat    sucrose.dat}   
+
+\end{frame}
+
+%-------------------------- Challenge 3 - Sol------------------------------------------%
+
+\begin{frame}{Script reading comprehension}
+
+Joel's data directory contains three files: \texttt{fructose.dat, glucose.dat}, and \texttt{sucrose.dat}. Explain what a script called \texttt{example.sh} would do when run as bash \texttt{example.sh *.dat} if it contained the following lines:
+\vspace{0.5cm}
+
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\small{\texttt{\# Script 2\\
+for filename in \$1 \$2 \$3\\
+do\\}
+\texttt{         cat \$filename\\}
+\texttt{done\\}}
+\end{beamerboxesrounded}
+
+\alert{ANSWER:}
+
+Shows contents of fructose.dat, glucose.dat, and sucrose.dat
+
+\end{frame}
+
+%-------------------------- Challenge 03 - SOL------------------------------------------%
+
+\begin{frame}{Script reading comprehension}
+
+Joel's data directory contains three files: \texttt{fructose.dat, glucose.dat}, and \texttt{sucrose.dat}. Explain what a script called \texttt{example.sh} would do when run as bash \texttt{example.sh *.dat} if it contained the following lines:
+\vspace{0.5cm}
+
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\small{\texttt{\# Script 3\\
+echo \$*.dat}}
+\end{beamerboxesrounded}
+
+\alert{ANSWER:}
+
+Prints
+
+\texttt{fructose.dat glucose.dat sucrose.dat.dat}
+
+\end{frame}
+
+
 %-------------------------- Finding things ------------------------------------------%
 
 \begin{frame}{Finding things}
 
 \begin{enumerate}
-    \item{Use grep to select lines from text files that match simple patterns.}
-    \item{Use find to find files whose names match simple patterns.}
+    \item{Use \texttt{grep} to select lines from text files that match simple patterns.}
+    \item{Use \texttt{find} to find files whose names match simple patterns.}
     \item{Use the output of one command as the command-line parameters to another command.}
     \item{Explain what is meant by `text' and `binary' files, and why many common tools don't handle the latter well.}
 \end{enumerate}
@@ -538,6 +617,24 @@ The \texttt{-v} flag to \texttt{grep} inverts pattern matching, so that only lin
 \item{\texttt{find /data -name `*.dat' -print | grep ose | grep -v temp}}
 \item{\texttt{find /data -name \text{ose.dat} -print | grep -v temp}}
 \item{\texttt{grep -v "temp" \$(find /data -name `*ose.dat' -print)}}
+\item{None of the above.}
+
+\end{enumerate}
+
+\end{frame}
+
+%-------------------------- Challenge 02 - SOL------------------------------------------%
+
+\begin{frame}{Matching \texttt{ose.dat} but not \texttt{temp}}
+
+The \texttt{-v} flag to \texttt{grep} inverts pattern matching, so that only lines which do not match the pattern are printed. Given that, which of the following commands will find all files in \texttt{/data} whose names end in \texttt{ose.dat} (e.g., \texttt{sucrose.dat} or \texttt{maltose.dat}), but do not contain the word \texttt{temp}?
+
+
+\begin{enumerate}
+
+\item{\texttt{find /data -name `*.dat' -print | grep ose | grep -v temp}}
+\item{\texttt{find /data -name \text{ose.dat} -print | grep -v temp}}
+\alert{\item{\texttt{grep -v "temp" \$(find /data -name `*ose.dat' -print)}}}
 \item{None of the above.}
 
 \end{enumerate}
