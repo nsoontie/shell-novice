@@ -64,6 +64,17 @@
 
 \end{enumerate}
 \end{block}
+\pause
+\begin{block}{Why use the shell?}
+\begin{itemize}
+\pause
+\item Connecting to supercomputers
+\pause
+\item Automate repetitive tasks
+\pause
+\item Reproducibility 
+\end{itemize}
+\end{block}
 \end{frame}
 
 
@@ -72,22 +83,7 @@
 \subsection*{Files and Directories}
 
 \begin{frame}
-\frametitle{Files and Directories}
-\begin{block}{Learning Goals}
-\begin{enumerate}
-\item    Explain the similarities and differences between a file and a directory.
-\item    Translate an absolute path into a relative path and vice versa.
-\item    Construct absolute and relative paths that identify specific files and directories.
-\item    Explain the steps in the shell's read-run-print cycle.
-\item    Identify actual command, flags, and filenames in command-line call.
-\item    Demonstrate the use of tab completion, and explain its advantages.
-\end{enumerate}
-\end{block}
-\end{frame}
-
-\begin{frame}
-\frametitle{Files and Directories}
-\begin{block}{Getting Started}
+\frametitle{Getting Started}
 
 You need to download some files to follow this lesson. These files are found on the shell lesson website (see etherpad)
 
@@ -98,19 +94,28 @@ You need to download some files to follow this lesson. These files are found on 
 \item Open Git Bash
 \end{enumerate}
  Enter this directory by typing the following command and hitting enter:
-\end{block}
 \texttt{ \$ cd \&\& cd Desktop/shell-novice/workshop}
 \end{frame}
 
 \begin{frame}
 \frametitle{Files and Directories}
-\begin{block}{Lesson Commands}
-\begin{multicols}{2}
+\small{
+\begin{block}{Learning Goals}
+\begin{enumerate}
+\item    Explain the similarities and differences between a file and a directory.
+\item    Translate an absolute path into a relative path and vice versa.
+\item    Construct absolute and relative paths that identify specific files and directories.
+\item    Explain the steps in the shell's read-run-print cycle.
+\item    Identify actual command, flags, and filenames in command-line call.
+\item    Demonstrate the use of tab completion, and explain its advantages.
+\end{enumerate}
+\end{block}}
+\begin{block}{Sample Code}
+\begin{multicols}{3}
 \begin{itemize}
 \item whoami
 \item pwd
 \item /
-%Possibly add mkdir commands, download data files and cd commands here or just me run from nelle directory??
 \item ls
 \item ls -F
 \item ls -F data
@@ -163,7 +168,9 @@ If \texttt{pwd} displays \texttt{/users/backup}, and \texttt{-r} tells \texttt{l
 \subsection*{Creating Things}
 \begin{frame}
 \frametitle{Creating Things}
+\small{
 \begin{block}{Learning Goals}
+
 \begin{enumerate}
 \item    Create a directory hierarchy that matches a given diagram.
 \item    Create files in that hierarchy using an editor or by copying and renaming existing files.
@@ -171,13 +178,7 @@ If \texttt{pwd} displays \texttt{/users/backup}, and \texttt{-r} tells \texttt{l
 \item    Delete specified files and/or directories.
 \end{enumerate}
 \end{block}
-
-\end{frame}
-
-
-\begin{frame}
-\frametitle{Creating Things}
-\begin{block}{Lesson Commands}
+\begin{block}{Sample Code}
 \begin{multicols}{2}
 \begin{itemize}
 \item mkdir thesis
@@ -192,7 +193,7 @@ If \texttt{pwd} displays \texttt{/users/backup}, and \texttt{-r} tells \texttt{l
 \item cp quotes.txt thesis/quotations.txt
 \end{itemize}
 \end{multicols}
-\end{block}
+\end{block}}
 \end{frame}
 
 
@@ -242,6 +243,7 @@ $ mv sucrose.dat analyzed/sucrose.dat
 \subsection*{PipesAndFilters}
 \begin{frame}
 \frametitle{Pipes and Filters}
+\small{
 \begin{block}{Learning Goals}
 \begin{enumerate}
 \item    Redirect a command's output to a file.
@@ -251,31 +253,23 @@ $ mv sucrose.dat analyzed/sucrose.dat
 \item    Explain Unix's "small pieces, loosely joined" philosophy.
 \end{enumerate}
 \end{block}
-\end{frame}
 
-\begin{frame}
-\frametitle{Pipes and Filters}
-\begin{block}{Lesson Commands}
 \begin{multicols}{2}
 \begin{itemize}
 \item cd molecules
 \item wc *.pdb
-\item *, ?
 \item wc -l
-\item wc --help
 \item wc -l *.pdb $>$ lengths
 \item cat lengths
 \item sort lengths
 \item sort lengths $>$ sorted-lengths
 \item head -1 sorted-lengths
 \item sort lengths $|$ head -1
-\item cd north-pacific-gyre/2012-07-03
 \item wc -l *.txt
 \item wc -l *.txt $|$ sort $|$ head -5
 \item ls *Z.txt
 \end{itemize}
-\end{multicols}
-\end{block}
+\end{multicols}}
 \end{frame}
 
 
