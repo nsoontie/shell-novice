@@ -318,8 +318,8 @@ In our current directory, we want to find the 3 files which have the least numbe
 \begin{itemize}
     \item{Write a loop that applies one or more commands separately to each file in a set of files.}
     \item{Trace the values taken on by a loop variable during execution of the loop.}
-    \item{Explain the difference between a variable�s name and its value.}
-    \item{Explain why spaces and some punctuation characters shouldn�t be used in file names.}
+    \item{Explain the difference between a variable's name and its value.}
+    \item{Explain why spaces and some punctuation characters shouldn't be used in file names.}
     \item{Demonstrate how to see what commands have recently been executed.}
     \item{Re-run recently executed commands without retyping them.}
     \end{itemize}
@@ -446,18 +446,53 @@ In the same directory, what is the effect of this loop?
 
 %-------------------------- Challenge 01------------------------------------------%
 
-\begin{frame}{Find the longest file with a given extension}
-Write a shell script called longest.sh that takes the name of a directory and a filename extension as its parameters, and prints out the name of the file with the most lines in that directory with that extension. For example:
-\vspace{0.5cm}
-
-
+\begin{frame}{}
+In the \texttt{molecules} directory, you have a shell script called \texttt{script.sh} containing the following commands:
 \begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
-\small{\texttt{\$ bash longest.sh /tmp/data pdb}}
+\small{\texttt{head \$2 \$1 \\ tail \$3 \$1}}
 \end{beamerboxesrounded}
 
-\vspace{0.5cm}
+While you are in the molecules directory, you type the following command:
 
-would print the name of the .pdb file in \texttt{/tmp/data} that has the most lines.
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\small{\texttt{bash script.sh `*.pdb' -1 -1}}
+\end{beamerboxesrounded}
+
+Which of the following outputs would you expect to see?
+
+\begin{enumerate}
+\item{All of the lines between the first and the last lines of each file ending in *.pdb in the molecules directory}
+    \item{The first and the last line of each file ending in *.pdb in the molecules directory}
+    \item{The first and the last line of each file in the molecules directory}
+    \item{An error because of the quotes around *.pdb}
+\end{enumerate}
+
+
+\end{frame}
+%-------------------------- Challenge 01 Sol------------------------------------------%
+
+\begin{frame}{}
+In the \texttt{molecules} directory, you have a shell script called \texttt{script.sh} containing the following commands:
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\small{\texttt{head \$2 \$1 \\ tail \$3 \$1}}
+\end{beamerboxesrounded}
+
+While you are in the molecules directory, you type the following command:
+
+\begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
+\small{\texttt{bash script.sh `*.pdb' -1 -1}}
+\end{beamerboxesrounded}
+
+Which of the following outputs would you expect to see?
+
+\begin{enumerate}
+\item{All of the lines between the first and the last lines of each file ending in *.pdb in the molecules directory}
+    \item{The first and the last line of each file ending in *.pdb in the molecules directory}
+    \item{The first and the last line of each file in the molecules directory}
+    \alert{\item{An error because of the quotes around *.pdb}}
+\end{enumerate}
+
+
 \end{frame}
 
 %-------------------------- Challenge 02------------------------------------------%
@@ -592,7 +627,7 @@ Write a short explanatory comment for the following shell script:
 \vspace{0.5cm}
 
 \begin{beamerboxesrounded}[upper=uppercolgreen,lower=lowercolgreen,shadow=false]{}
-\texttt{find . -name *.dat' -print | wc -l | sort -n}
+\texttt{find . -name `*.dat' -print | wc -l | sort -n}
 \end{beamerboxesrounded}
 
 
